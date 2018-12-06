@@ -1,4 +1,4 @@
-typedef struct node0 {//¶¨ÒåÒ»¸ö½Úµã
+typedef struct node0 {
 	ElemType data;
 	int deep;
 	struct node0* pointArray[MAX_CONTAINER_SIZE];
@@ -25,16 +25,16 @@ Status creatTree(nod* head) {
 #define FALSE 0
 #define OK 1
 #define ERROR 0
-#define INFEASIBLE -1//²»¿ÉÊµĞĞµÄ
-#define OVERFLOW -2//Òç³ö
-#define MAX_CONTAINER_SIZE 100//ÈİÆ÷µÄÈİÁ¿
-typedef int Status;//º¯Êı½á¹û×´Ì¬´úÂë
-typedef int ElemType;//´æ´¢µÄÊı¾İµÄÀàĞÍ
-typedef struct b {//¸¸½ÚµãµÄÖ¸ÏòÎÊÌâ
-	struct a* son;//Ö¸ÏòÒ»¸ö×Ó½Úµã
-	struct b* sonNext;//Ö¸Ïò¸¸½ÚµãµÄÏÂÒ»¸ö×Ó½ÚµãµÄĞÅÏ¢¡ªÆ½¼¶¹ØÏµ
+#define INFEASIBLE -1
+#define OVERFLOW -2
+#define MAX_CONTAINER_SIZE 100
+typedef int Status;
+typedef int ElemType;//å­˜å‚¨çš„æ•°æ®çš„ç±»å‹
+typedef struct b {//çˆ¶èŠ‚ç‚¹çš„æŒ‡å‘é—®é¢˜
+	struct a* son;//æŒ‡å‘ä¸€ä¸ªå­èŠ‚ç‚¹
+	struct b* sonNext;//æŒ‡å‘çˆ¶èŠ‚ç‚¹çš„ä¸‹ä¸€ä¸ªå­èŠ‚ç‚¹çš„ä¿¡æ¯â€”å¹³çº§å…³ç³»
 }sonPoint;
-sonPoint* creSonPoint() {//Ö¸Ïò¶à¸ösonµÄÁ´±í
+sonPoint* creSonPoint() {//æŒ‡å‘å¤šä¸ªsonçš„é“¾è¡¨
 	sonPoint *head, *p1, *p2;
 	int i = 0;
 	head = NULL;
@@ -42,7 +42,7 @@ sonPoint* creSonPoint() {//Ö¸Ïò¶à¸ösonµÄÁ´±í
 	creatTree(p1->son);
 	if((p1->son)->)
 }
-typedef struct a {//¶¨ÒåÒ»¸ö½Úµã£¬aÊÇÒ»¸öÃû³Æ¶øÒÑ¡£
+typedef struct a {//å®šä¹‰ä¸€ä¸ªèŠ‚ç‚¹ï¼Œaæ˜¯ä¸€ä¸ªåç§°è€Œå·²ã€‚
 	ElemType data;
 	struct b* pointLine;
 }node;
