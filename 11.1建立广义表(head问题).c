@@ -5,13 +5,13 @@
 #define FALSE 0
 #define OK 1
 #define ERROR 0
-#define INFEASIBLE -1//不可实行的
-#define OVERFLOW -2//溢出
-#define MAX_CONTAINER_SIZE 100//容器的容量
-typedef int Status;//函数结果状态代码
-typedef int ElemType;//存储的数据的类型
-typedef struct node0 {//定义一个节点
-	int flag;//1为表节点，0为数据节点
+#define INFEASIBLE -1
+#define OVERFLOW -2
+#define MAX_CONTAINER_SIZE 100
+typedef int Status;
+typedef int ElemType;
+typedef struct node0 {
+	int flag;
 	union {
 		ElemType data;
 		struct node0* down;
@@ -19,7 +19,7 @@ typedef struct node0 {//定义一个节点
 	struct node0* next;
 }nod;
 
-Status CreatTable(nod* node) {//遍历
+Status CreatTable(nod* node) {//閬嶅巻
 	node = (nod*)malloc(sizeof(nod));
 	char judge1;
 	printf("Data Noed Y/N?\n");
