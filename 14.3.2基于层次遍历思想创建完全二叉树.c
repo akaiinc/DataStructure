@@ -187,6 +187,7 @@ treeNode* creTree() {
 	}
 	//free掉队列中多余的指针以及指针指向的区域
 	destrouP_Q(pointQ);
+	destroyD_Q(dataQ);
 	return root;
 }
 
