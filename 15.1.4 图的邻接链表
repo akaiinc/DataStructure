@@ -1,0 +1,104 @@
+#include<stdlib.h>
+#include<stdio.h>
+#include<string.h>
+#define number 3
+
+typedef int ElemType;
+
+typedef struct NBlock {
+	ElemType data;
+	struct ABlock *head;
+}NodeBlock;
+
+typedef struct ABlock {
+	int weight;
+	int index;		//存储人家的下角标就可以了！
+	struct ABlock* next;
+}ArcBlock;
+
+NodeBlock* creAdjacencyChain() {
+	//建立节点
+	NodeBlock can[number];
+	for (int i = 0; i <number; i++) {
+		printf("请输入节点 %d 的数据：",i+1);
+		scanf("%d", &can[i].data);
+		getchar();
+		can[i].head = NULL;
+	}
+
+	//建立弧的关系
+	int jud1;
+	printf("The AdjacencyChain you want to creat is Directed(1) or Undirected(2)?  ");
+	scanf("%d", &jud1);
+	getchar();
+	for (int i = 0; i < number; i++) {
+		ArcBlock** p1 = &can[i].head;
+		//建立有向图
+		if (jud1 == 1) {
+			//处理与j之间的关系
+			for (int j = 0; j < number; j++) {
+				if (i == j) continue;
+				int jud2;
+				printf("Do you want to Establish ACR From %d——>%d ?	Y for 1, N for 2:    ", i+1, j+1);
+				scanf("%d", &jud2);
+				getchar();
+				if (jud2 == 1) {
+					*p1 = (ArcBlock*)malloc(sizeof(ArcBlock));
+					(*p1)->index = j;
+					(*p1)->next = NULL;
+					printf("The Weight is	");
+					scanf("%d", &((*p1)->weight));
+					p1 = &((*p1)->next);
+				}
+				else
+				{
+					continue;
+				}
+			}
+		}
+		//建立无向图
+		else
+		{
+			ArcBlock** p2 = NULL;
+			//处理与j之间的关系
+			for (int j = i+1; j < number; j++) {
+				//找的j的最后一个节点
+				p2 = &(can[j].head);
+				while ((*p2)!=NULL)
+				{
+					p2 = &((*p2)->next);
+				}
+
+				int jud2;
+				printf("Do you want to Establish ACR Between %d and %d ?	  Y for 1, N for 2:    ", i+1, j+1);
+				scanf("%d", &jud2);
+				getchar();
+				if (jud2 == 1) {
+					*p1 = (ArcBlock*)malloc(sizeof(ArcBlock));
+					*p2= (ArcBlock*)malloc(sizeof(ArcBlock));
+					(*p1)->index = j;
+					(*p2)->index = i;
+					(*p1)->next = NULL;
+					(*p2)->next = NULL;
+					printf("The Weight is	");
+					scanf("%d", &((*p1)->weight));
+					p1 = &((*p1)->next);
+				}
+				else
+				{
+					continue;
+				}
+			}
+		}
+	}
+
+
+	return can;
+}
+
+int main() {
+	NodeBlock* head = creAdjacencyChain();
+
+	system("pause");
+	return 0;
+}
